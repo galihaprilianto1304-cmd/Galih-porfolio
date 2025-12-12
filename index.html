@@ -25,6 +25,15 @@ body {
     background-color: #1a1a1a; /* Dark background color */
     color: #ffffff;
     line-height: 1.6;
+    
+    /* === HITECH DOT PATTERN BACKGROUND === */
+    /* Membuat pola titik-titik kecil abu-abu */
+    background-image: 
+        radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px; /* Jarak antar titik */
+    background-position: 0 0, 10px 10px; /* Mengimbangi (offset) untuk pola bata */
+    /* ========================================= */
 }
 
 .container {
@@ -227,6 +236,8 @@ h1, h2, h3 {
 .experience {
     padding: 80px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
+    /* Dibuat lebih opak agar konten menonjol */
+    background-color: rgba(26, 26, 26, 0.9); 
 }
 
 .experience h2 {
@@ -353,6 +364,13 @@ h1, h2, h3 {
     position: relative;
     overflow: hidden;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
+    /* Dibuat lebih opak agar konten menonjol */
+    background-color: rgba(26, 26, 26, 0.9); 
+    
+    /* NEW: Diagonal Lines (Garis diagonal tipis) */
+    background-image: 
+        linear-gradient(45deg, transparent 99%, rgba(255, 255, 255, 0.05) 100%);
+    background-size: 40px 40px; /* Ukuran pola berulang */
 }
 
 .skills-header {
@@ -512,9 +530,25 @@ h1, h2, h3 {
     transition: background-color 0.3s;
 }
 
+/* Custom style for WhatsApp icon */
+.contact-item.whatsapp-icon:hover .contact-icon {
+    background-color: #25D366; /* WhatsApp Green */
+}
+
+
 .contact-item:hover .contact-icon {
     background-color: #ff6600;
 }
+
+/* Override the general hover color for WhatsApp to be green */
+.contact-item.whatsapp-link:hover {
+    color: #25D366; 
+}
+.contact-item.whatsapp-link:hover .contact-icon {
+    background-color: #25D366;
+    color: #fff; /* Ensure the text/icon inside the circle is white */
+}
+
 
 .copyright {
     font-size: 0.9em;
@@ -862,10 +896,10 @@ experience with fresh ideas (and perhaps too large of a font collection), let's 
                     aprealiant@gmail.com
                 </a>
                 
-                <!-- Phone (Icon: 📞) -->
-                <a href="tel:+6281218200770" class="contact-item">
-                    <span class="contact-icon">📞</span>
-                    +62 812 1820 0770
+                <!-- WhatsApp Link (Icon: 🟢) -->
+                <a href="https://wa.me/6281218200770" class="contact-item whatsapp-link">
+                    <span class="contact-icon" style="color: #25D366;">🟢</span> <!-- WhatsApp Color Icon -->
+                    +62 812 1820 0770 (WhatsApp)
                 </a>
 
                 <!-- LinkedIn (Icon: 🔗) -->
