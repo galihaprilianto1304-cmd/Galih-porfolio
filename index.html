@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galih - Digital Portfolio</title>
+    <title>Galih - Digital Portfolio | Creative Hitech</title>
     <!-- Link Font Inter from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Inline CSS Styles -->
     <style>
+/* VARIABEL WARNA */
+:root {
+    --color-primary: #ff6600; /* Orange */
+    --color-accent: #00ffff; /* Cyan/Aqua for Hitech accent */
+    --color-dark: #0d0d0d; /* Very dark background */
+    --color-text-light: #f0f0f0;
+}
+
 /* RESET DASAR */
 * {
     margin: 0;
@@ -22,18 +30,22 @@ html {
 
 body {
     font-family: 'Inter', sans-serif; /* Using Inter as the modern font */
-    background-color: #1a1a1a; /* Dark background color */
-    color: #ffffff;
+    background-color: var(--color-dark); /* Very dark base color */
+    color: var(--color-text-light);
     line-height: 1.6;
     
-    /* === HITECH DOT PATTERN BACKGROUND === */
-    /* Membuat pola titik-titik kecil abu-abu */
-    background-image: 
-        radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 20px 20px; /* Jarak antar titik */
-    background-position: 0 0, 10px 10px; /* Mengimbangi (offset) untuk pola bata */
-    /* ========================================= */
+    /* === EXCLUSIVE HITECH PATTERN (Grid + Dots + Diagonal) === */
+    /* Layer 1: Garis Diagonal Halus */
+    background-image:
+        linear-gradient(45deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(-45deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+        /* Layer 2: Grid Halus */
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        
+    background-size: 50px 50px, 50px 50px, 50px 50px, 50px 50px;
+    background-position: 0 0, 0 0, 0 0, 0 0;
+    /* ========================================================= */
 }
 
 .container {
@@ -55,62 +67,68 @@ a {
 /* GENERAL COMPONENTS */
 
 .tag {
-    color: #ff6600; /* Orange color */
+    color: var(--color-accent); /* Menggunakan Cyan untuk tag */
     font-size: 0.9em;
-    letter-spacing: 2px;
+    letter-spacing: 3px; /* Lebih lebar */
     margin-bottom: 10px;
-    font-weight: 600;
+    font-weight: 700;
+    text-shadow: 0 0 3px rgba(0, 255, 255, 0.5); /* Subtle neon glow */
 }
 
 .btn {
     padding: 12px 30px;
-    border-radius: 8px; /* More rounded corners */
+    border-radius: 8px;
     display: inline-block;
-    transition: background-color 0.3s, border-color 0.3s;
-    font-weight: 600;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    font-weight: 800; /* Lebih tebal */
     text-transform: uppercase;
     letter-spacing: 1px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .contact-btn {
     background-color: transparent;
-    border: 1px solid #ffffff;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
 }
 .contact-btn:hover {
-    background-color: #ff6600;
-    border-color: #ff6600;
+    background-color: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 15px var(--color-accent); /* Stronger glow on hover */
+    color: #fff;
 }
 
 
 .portfolio-btn {
-    background-color: #ff6600;
+    background-color: var(--color-primary);
     color: #fff;
-    border: 1px solid #ff6600;
+    border: 1px solid var(--color-primary);
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.5); /* Orange glow */
 }
 .portfolio-btn:hover {
-    background-color: #cc5200;
-}
-
-.see-all {
-    color: #999;
-    transition: color 0.3s;
-}
-.see-all:hover {
-    color: #ff6600;
+    background-color: var(--color-primary);
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.8); /* Stronger orange glow */
+    transform: translateY(-2px);
 }
 
 h1, h2, h3 {
     margin-bottom: 15px;
     font-weight: 900;
 }
+h1 {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+h2 {
+    text-shadow: 0 0 3px rgba(0, 255, 255, 0.5);
+}
 
 /* HEADER/NAVIGATION */
 .header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    position: sticky; /* Sticky header */
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1); /* Cyan border */
+    position: sticky;
     top: 0;
     z-index: 100;
-    background-color: #1a1a1a; /* Ensure header is visible above content */
+    background-color: rgba(13, 13, 13, 0.9); /* Slightly transparent dark */
+    backdrop-filter: blur(5px); /* Blur effect */
 }
 .header .container {
     display: flex;
@@ -122,22 +140,27 @@ h1, h2, h3 {
 .logo {
     font-size: 1.8em;
     font-weight: 900;
-    color: #fff;
+    color: var(--color-accent); /* Logo in cyan */
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
 }
 
 .navbar ul {
     display: flex;
     gap: 25px;
 }
-.navbar a:hover {
-    color: #ff6600;
+.navbar a {
+    color: #ccc;
+    font-weight: 600;
 }
-/* Hiding main navigation on mobile */
+.navbar a:hover {
+    color: var(--color-accent);
+    text-shadow: 0 0 5px var(--color-accent);
+}
 .navbar {
     display: block; 
 }
 .header .contact-btn {
-    display: block; /* Show button on desktop */
+    display: block;
 }
 
 /* HERO SECTION */
@@ -162,7 +185,7 @@ h1, h2, h3 {
 }
 
 .hero-content h1 {
-    font-size: 4.5em; 
+    font-size: 4.8em; /* Larger */
     line-height: 1.1;
     text-transform: uppercase;
 }
@@ -177,18 +200,18 @@ h1, h2, h3 {
     max-width: 100%;
     height: auto;
     display: block;
-    border-radius: 8px; 
-    /* Placeholder Styling */
-    background-color: #ff6600; 
+    border-radius: 12px; 
+    background-color: #333; 
     min-height: 400px;
     object-fit: cover;
-    filter: grayscale(10%);
-    /* Hover Effect */
-    transition: transform 0.4s, filter 0.4s;
+    border: 3px solid var(--color-primary); /* Bold border */
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.5); /* Orange shadow */
+    transition: transform 0.4s, filter 0.4s, box-shadow 0.4s;
 }
 .hero-image:hover img {
-    transform: scale(1.03); /* Slight zoom on hover */
-    filter: grayscale(0%); /* Remove grayscale on hover */
+    transform: scale(1.05) rotate(1deg); /* Slight zoom and tilt */
+    box-shadow: 0 0 30px var(--color-accent); /* Switch to Cyan glow on hover */
+    border-color: var(--color-accent);
 }
 
 .social-icons {
@@ -199,16 +222,18 @@ h1, h2, h3 {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    background: #252525;
+    background: rgba(37, 37, 37, 0.7);
     padding: 10px 5px;
     border-radius: 4px;
+    border-left: 1px solid var(--color-accent);
 }
 .social-icons a {
     color: #999;
     font-size: 1.2em;
 }
 .social-icons a:hover {
-    color: #ff6600;
+    color: var(--color-accent);
+    text-shadow: 0 0 5px var(--color-accent);
 }
 
 /* Background Text */
@@ -216,7 +241,7 @@ h1, h2, h3 {
     position: absolute;
     font-size: 15vw; 
     font-weight: 900;
-    color: rgba(255, 255, 255, 0.03); 
+    color: rgba(255, 255, 255, 0.02); /* Lebih tipis */
     z-index: 1;
     pointer-events: none;
     text-transform: uppercase;
@@ -235,9 +260,8 @@ h1, h2, h3 {
 /* EXPERIENCE SECTION */
 .experience {
     padding: 80px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    /* Dibuat lebih opak agar konten menonjol */
-    background-color: rgba(26, 26, 26, 0.9); 
+    border-top: 1px solid rgba(0, 255, 255, 0.1);
+    background-color: rgba(13, 13, 13, 0.85); /* Slightly transparent dark */
 }
 
 .experience h2 {
@@ -248,42 +272,36 @@ h1, h2, h3 {
 
 .experience-grid {
     display: grid;
-    grid-template-columns: 1fr 3fr; /* Left Column (Summary/Education) and Right Column (Timeline) */
+    grid-template-columns: 1fr 3fr;
     gap: 60px;
 }
 
 .experience-summary {
-    background-color: #252525;
+    background-color: #1a1a1a;
     padding: 30px;
     border-radius: 10px;
     height: fit-content;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
 }
-.experience-summary p {
-    color: #ccc;
-    margin-bottom: 20px;
-}
+
 .education-item {
-    padding: 15px 10px; /* Add horizontal padding for hover */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px; /* Rounded corners for hover */
-    margin: 5px 0; /* Margin for separation */
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    margin: 5px 0;
     transition: background-color 0.3s, transform 0.3s;
 }
-.education-item:last-child {
-    border-bottom: none;
-}
+
 .education-item:hover {
-    background-color: rgba(255, 255, 255, 0.05); /* Hover effect */
+    background-color: rgba(0, 255, 255, 0.1); /* Cyan hover */
     transform: scale(1.02);
 }
+
 .education-item strong {
-    color: #ff6600;
-    display: block;
-    margin-bottom: 5px;
+    color: var(--color-primary); /* Orange */
 }
 .education-item span {
-    display: block;
-    font-size: 0.9em;
     color: #999;
 }
 
@@ -299,23 +317,25 @@ h1, h2, h3 {
     left: 10px;
     width: 2px;
     height: 100%;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--color-accent); /* Cyan timeline line */
+    box-shadow: 0 0 10px var(--color-accent);
 }
 
 .timeline-item {
     margin-bottom: 40px;
-    padding: 10px 40px; /* Add top/bottom padding for hover */
-    padding-left: 40px; /* Keep padding-left for dot positioning */
-    margin-left: -10px; /* Shift slightly left to cover new padding space */
+    padding: 10px 40px;
+    padding-left: 40px;
+    margin-left: -10px;
     margin-right: -10px;
     position: relative;
-    border-radius: 8px; /* Rounded corners for hover */
+    border-radius: 8px;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 .timeline-item:hover {
-    background-color: rgba(255, 102, 0, 0.1); /* Transparent orange color */
-    transform: translateX(5px); /* Shift slightly right */
+    background-color: rgba(255, 102, 0, 0.1); 
+    transform: translateX(10px); /* Shift further right */
+    border-left: 2px solid var(--color-primary);
 }
 
 .timeline-item::before {
@@ -324,37 +344,25 @@ h1, h2, h3 {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: #ff6600;
-    border: 3px solid #1a1a1a;
-    left: 2px; /* Adjusted to stay on the timeline line */
-    top: 15px; /* Adjusted to new padding */
+    background: var(--color-primary);
+    border: 3px solid var(--color-dark);
+    left: 2px;
+    top: 15px;
     z-index: 5;
-}
-
-.timeline-item h3 {
-    margin-top: 0;
-    margin-bottom: 5px;
-    font-size: 1.2em;
+    box-shadow: 0 0 10px var(--color-primary); /* Orange glow on dot */
 }
 
 .timeline-item .duration {
-    color: #ff6600;
-    font-weight: 600;
-    font-size: 0.9em;
-    display: block;
-    margin-bottom: 5px;
+    color: var(--color-accent); /* Cyan duration */
+    font-weight: 700;
 }
 
 .timeline-item .company {
     color: #999;
-    font-size: 1em;
-    display: block;
-    margin-bottom: 10px;
 }
 
 .timeline-item .description {
     color: #ccc;
-    font-size: 0.95em;
 }
 
 
@@ -363,14 +371,8 @@ h1, h2, h3 {
     padding: 100px 0;
     position: relative;
     overflow: hidden;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    /* Dibuat lebih opak agar konten menonjol */
-    background-color: rgba(26, 26, 26, 0.9); 
-    
-    /* NEW: Diagonal Lines (Garis diagonal tipis) */
-    background-image: 
-        linear-gradient(45deg, transparent 99%, rgba(255, 255, 255, 0.05) 100%);
-    background-size: 40px 40px; /* Ukuran pola berulang */
+    border-top: 1px solid rgba(0, 255, 255, 0.1);
+    background-color: rgba(13, 13, 13, 0.85);
 }
 
 .skills-header {
@@ -391,11 +393,12 @@ h1, h2, h3 {
 
 .skill-category h3 {
     font-size: 1.5em;
-    font-weight: 700;
-    color: #ff6600; /* Orange color for subheadings */
+    font-weight: 800;
+    color: var(--color-primary); 
     margin-bottom: 20px;
     display: flex;
     align-items: center;
+    text-shadow: 0 0 5px rgba(255, 102, 0, 0.5);
 }
 
 /* SOFTWARE PROFICIENCY (PROGRESS BARS) */
@@ -409,6 +412,7 @@ h1, h2, h3 {
     align-items: center;
     font-weight: 600;
     margin-bottom: 5px;
+    color: var(--color-accent);
 }
 
 .progress-bar-container {
@@ -420,8 +424,9 @@ h1, h2, h3 {
 
 .progress-bar {
     height: 100%;
-    background-color: #ff6600;
+    background: linear-gradient(to right, var(--color-accent), var(--color-primary)); /* Gradient progress bar */
     transition: width 0.8s ease-out;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
 }
 
 /* CORE COMPETENCIES (BOXES) */
@@ -432,23 +437,26 @@ h1, h2, h3 {
 }
 
 .competency-item {
-    background-color: #252525;
+    background-color: #1a1a1a;
     padding: 20px;
     border-radius: 8px;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Add transform and shadow */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 .competency-item:hover {
-    background-color: #303030;
-    transform: scale(1.05); /* Zoom effect */
-    box-shadow: 0 5px 15px rgba(255, 102, 0, 0.1);
+    background-color: #1e1e1e;
+    transform: translateY(-5px); 
+    border-color: var(--color-accent); /* Border changes to cyan */
+    box-shadow: 0 5px 25px rgba(0, 255, 255, 0.4); /* Strong cyan glow */
 }
 
 .competency-item h4 {
     margin-top: 0;
     margin-bottom: 5px;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 1.1em;
-    color: #fff;
+    color: var(--color-accent);
 }
 
 .competency-item p {
@@ -460,12 +468,14 @@ h1, h2, h3 {
 
 .additional-tools {
     margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
 }
 .additional-tools h4 {
     font-size: 1em;
-    color: #ff6600;
-    margin-bottom: 10px;
-    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    font-weight: 700;
 }
 
 .tool-tags {
@@ -475,24 +485,27 @@ h1, h2, h3 {
 }
 
 .tool-tags span {
-    background-color: #333;
+    background-color: #252525;
     padding: 8px 15px;
     border-radius: 4px;
     font-size: 0.9em;
-    color: #ddd;
+    color: var(--color-accent);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.1);
 }
 
 /* CONTACT / FOOTER SECTION */
 .contact-footer {
     padding: 80px 0 30px 0;
-    background-color: #1a1a1a;
+    background-color: var(--color-dark);
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(0, 255, 255, 0.1);
 }
 
 .contact-footer h2 {
     font-size: 2.5em;
     margin-bottom: 40px;
+    color: var(--color-primary);
 }
 
 .contact-icons {
@@ -507,14 +520,15 @@ h1, h2, h3 {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #fff;
+    color: var(--color-text-light);
     font-weight: 600;
-    transition: color 0.3s, transform 0.3s;
+    transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
 }
 
 .contact-item:hover {
-    color: #ff6600; /* Orange color on hover */
-    transform: translateY(-5px); /* Lift slightly */
+    color: var(--color-accent); 
+    transform: translateY(-5px); 
+    text-shadow: 0 0 10px var(--color-accent);
 }
 
 /* Icon Styling (Using Unicode/Emoji as Placeholder Icons) */
@@ -522,37 +536,38 @@ h1, h2, h3 {
     font-size: 1.5em;
     width: 40px;
     height: 40px;
-    background-color: #252525;
+    background-color: #1a1a1a;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s;
+    border: 1px solid var(--color-primary);
+    box-shadow: 0 0 5px var(--color-primary);
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-item:hover .contact-icon {
+    background-color: rgba(0, 255, 255, 0.1);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 10px var(--color-accent);
 }
 
 /* Custom style for WhatsApp icon */
-.contact-item.whatsapp-icon:hover .contact-icon {
-    background-color: #25D366; /* WhatsApp Green */
-}
-
-
-.contact-item:hover .contact-icon {
-    background-color: #ff6600;
-}
-
-/* Override the general hover color for WhatsApp to be green */
 .contact-item.whatsapp-link:hover {
     color: #25D366; 
+    text-shadow: 0 0 10px #25D366;
 }
 .contact-item.whatsapp-link:hover .contact-icon {
-    background-color: #25D366;
-    color: #fff; /* Ensure the text/icon inside the circle is white */
+    background-color: #1a1a1a;
+    border-color: #25D366;
+    box-shadow: 0 0 10px #25D366;
+    color: #25D366;
 }
 
 
 .copyright {
     font-size: 0.9em;
-    color: #999;
+    color: #555;
     margin-top: 30px;
 }
 
@@ -561,54 +576,13 @@ h1, h2, h3 {
 /* RESPONSIVENESS (MOBILE/TABLET) */
 /* ========================================= */
 
-/* Media Query for Tablet (Max-width 1024px) */
-@media (max-width: 1024px) {
-    /* Header */
-    .navbar ul {
-        gap: 15px;
-    }
-    
-    /* Hero Section */
-    .hero-content h1 {
-        font-size: 3.5em;
-    }
-
-    /* Experience Section */
-    .experience-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    /* Skills Section */
-    .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    /* About Section */
-    .about-content h2 {
-        font-size: 2em;
-    }
-    
-    /* Core Competencies Grid */
-    .core-competencies {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Media Query for Mobile (Max-width 768px) */
 @media (max-width: 768px) {
     
-    /* Header (Hide Navigation on Mobile) */
-    .navbar {
-        display: none;
-    }
     .header .contact-btn {
         padding: 8px 15px;
         font-size: 0.9em;
     }
 
-    /* Hero Section: Change to stacked layout */
     .hero .container {
         flex-direction: column;
         text-align: center;
@@ -616,68 +590,59 @@ h1, h2, h3 {
     
     .hero-content {
         max-width: 100%;
-        order: 2; /* Move content below image */
+        order: 2;
     }
     
     .hero-image {
-        order: 1; /* Move image to the top */
+        max-width: 80%; 
+        margin: 0 auto;
+        min-height: 300px;
+        order: 1;
         margin-bottom: 40px;
     }
     
     .hero-image img {
-        max-width: 70%; /* Reduce image size on mobile */
-        margin: 0 auto;
-        min-height: 300px;
+        max-width: 100%;
     }
     .social-icons {
-        right: 15%;
-        top: 80%;
+        right: 10%;
+        top: 90%;
         transform: none;
         flex-direction: row;
         width: auto;
         padding: 5px 15px;
+        border: 1px solid var(--color-accent);
+        border-radius: 8px;
     }
 
     .hero-content h1 {
-        font-size: 2.5em; /* Smaller font */
+        font-size: 2.8em; 
     }
     
-    /* Background Text (Made smaller) */
     .bg-text {
-        font-size: 18vw;
+        font-size: 20vw;
     }
     .portfolio {
-        display: none; /* Hide one background text */
+        display: none; 
     }
 
-    /* Experience Section: Change to 1 column */
     .experience-grid {
-        grid-template-columns: 1fr; /* 1 full column */
+        grid-template-columns: 1fr;
         gap: 30px;
     }
 
-    /* Skills Section */
     .skills-header h2 {
         font-size: 2.5em;
     }
     .skills-grid {
         grid-template-columns: 1fr;
     }
-    .skill-category:nth-child(2) {
-        margin-top: 20px;
-    }
     
-    /* Contact Section */
-    .contact-icons {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .contact-footer h2 {
-        font-size: 2em;
+    .core-competencies {
+        grid-template-columns: 1fr;
     }
 }
     </style>
-    <!-- Placeholder Icons (using Unicode) -->
 </head>
 <body>
 
@@ -687,7 +652,6 @@ h1, h2, h3 {
             <div class="logo">GALIH</div>
             <nav class="navbar">
                 <ul>
-                    <!-- Navigation Links Updated to Section IDs -->
                     <li><a href="#hero-section">Home</a></li>
                     <li><a href="#hero-section">About Me</a></li>
                     <li><a href="#experience-section">Experience</a></li>
@@ -695,7 +659,6 @@ h1, h2, h3 {
                     <li><a href="#contact-section">Contact</a></li>
                 </ul>
             </nav>
-            <!-- Update WhatsApp link on contact button -->
             <a href="https://wa.me/6281218200770" class="btn contact-btn">CONTACT ME &rarr;</a>
         </div>
     </header>
@@ -704,11 +667,10 @@ h1, h2, h3 {
     <section class="hero" id="hero-section">
         <div class="container">
             <div class="hero-content">
+                <!-- TAG P DIUBAH MENJADI HANYA "HELLO" -->
                 <p class="tag">HELLO</p>
-                <!-- Name Updated -->
                 <h1>I AM GALIH APRILIANTO</h1>
-                <!-- Description Translated -->
-                <p class="subtitle">Part designer, part visual storyteller, full-time creative enthusiast. For over 15 years,
+                <p class="subtitle" style="color: #ccc;">Part designer, part visual storyteller, full-time creative enthusiast. For over 15 years,
 I’ve been creating visuals that actually work—not just pretty things,
 but designs that sell, inform, persuade, and occasionally, even surprise.
 I've designed for retail giants, educational platforms, media, printing, and
@@ -720,18 +682,14 @@ experience with fresh ideas (and perhaps too large of a font collection), let's 
                 <a href="https://drive.google.com/drive/folders/1w17-HLmo9s2W-hhSAE-mJFml0zjGZzuc" class="btn portfolio-btn">VIEW CV & PORTFOLIO</a>
             </div>
             <div class="hero-image">
-                <!-- Profile Image - Link updated to the provided image URL -->
                 <img src="https://i.postimg.cc/ZYMWW6vy/Whats-App-Image-2025-12-12-at-14-08.png" 
                      alt="GALIH APRILIANTO, Digital Designer" 
                      onerror="this.onerror=null; this.src='https://i.postimg.cc/ZYMWW6vy/Whats-App-Image-2025-12-12-at-14-08.png';">
                 
-                <!-- Social media icons -->
                 <div class="social-icons">
                     <a href="https://www.linkedin.com/in/galih-aprilianto-22b428112" title="LinkedIn">in</a> 
-
                 </div>
             </div>
-            <!-- Large background text 'Creative' and 'Portfolio' -->
             <div class="bg-text creative">Creative</div>
             <div class="bg-text portfolio">Portfolio</div>
         </div>
@@ -747,7 +705,7 @@ experience with fresh ideas (and perhaps too large of a font collection), let's 
                 
                 <!-- Left Column: Summary & Education -->
                 <div class="experience-summary">
-                    <h3 style="color: #ff6600; margin-top: 0;">Education</h3>
+                    <h3 style="color: var(--color-primary); margin-top: 0; text-shadow: none;">Education</h3>
                     
                     <div class="education-item">
                         <strong>2006 - 2009</strong>
@@ -765,7 +723,7 @@ experience with fresh ideas (and perhaps too large of a font collection), let's 
                 <div class="timeline">
                     <div class="timeline-item">
                         <span class="duration">2017 - 2025</span>
-                        <h3>Creative Design SPV</h3>
+                        <h3>SPV Creative Design</h3>
                         <span class="company">Bluefox International</span>
                         <p class="description">Supervising the design team and handling a wide scope of creative tasks, including letter design, award photography and videography, catalog design, product photography, photo editing, logo creation, packaging design, stationery design, landing pages, and social media visuals.</p>
                     </div>
@@ -807,7 +765,7 @@ experience with fresh ideas (and perhaps too large of a font collection), let's 
         <div class="container">
             
             <div class="skills-header">
-                <p class="tag"># SKILLS</p>
+                <p class="tag"># EXPERTISE</p>
                 <h2>My Expertise.</h2>
             </div>
             
@@ -898,7 +856,7 @@ experience with fresh ideas (and perhaps too large of a font collection), let's 
                 
                 <!-- WhatsApp Link (Icon: 🟢) -->
                 <a href="https://wa.me/6281218200770" class="contact-item whatsapp-link">
-                    <span class="contact-icon" style="color: #25D366;">🟢</span> <!-- WhatsApp Color Icon -->
+                    <span class="contact-icon" style="color: #25D366;">🟢</span>
                     +62 812 1820 0770 (WhatsApp)
                 </a>
 
@@ -910,7 +868,6 @@ experience with fresh ideas (and perhaps too large of a font collection), let's 
             </div>
 
             <p class="copyright">
-                <!-- Copyright Name Updated -->
                 &copy; 2025 Galih Aprilianto. All rights reserved. <br>
                 Creative Portfolio.
             </p>
